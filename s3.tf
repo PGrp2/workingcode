@@ -1,6 +1,6 @@
 # s3 bucket for terraform
 resource "aws_s3_bucket" "backend" {
-  bucket = "bootcamp32-${lower(var.env)}-${random_integer.backend.result}"
+  bucket = "prgrp2-${lower(var.env)}-${random_integer.backend.result}"
 
   tags = {
     Name        = "My backend"
@@ -34,9 +34,4 @@ resource "random_integer" "backend" {
   }
 }
 
- resource "aws_s3_bucket_versioning" "example" {
-  bucket = aws_s3_bucket.backend.id
-  versioning_configuration {
-    status = "var.versioning"
-  }
-}
+ 
