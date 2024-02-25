@@ -1,3 +1,8 @@
+
+============================================================================================
+# New code with Checkov added for deployment:
+
+
 # s3 bucket for terraform
 resource "aws_s3_bucket" "backend" {
   bucket = "prgrp2-${lower(var.env)}-${random_integer.backend.result}"
@@ -32,6 +37,15 @@ resource "random_integer" "backend" {
   keepers = {
     Environment = var.env
   }
+}
+
+# Checkov resource for code scanning
+resource "null_resource" "code_scanning" {
+  provisioner "local-exec" {
+    command = "checkov --directory ."
+  }
+
+  depends_on = [aws_s3_bucket.backend, aws_kms_key.my_key]
 }
 
  
