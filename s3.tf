@@ -1,5 +1,3 @@
-
-============================================================================================
 # New code with Checkov added for deployment:
 
 
@@ -39,6 +37,7 @@ resource "random_integer" "backend" {
   }
 }
 
+/*
 # Checkov resource for code scanning
 resource "null_resource" "code_scanning" {
   provisioner "local-exec" {
@@ -47,5 +46,5 @@ resource "null_resource" "code_scanning" {
 
   depends_on = [aws_s3_bucket.backend, aws_kms_key.my_key]
 }
+*/
 
- 

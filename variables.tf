@@ -11,4 +11,4 @@ variable "region" {
 variable "versioning" {
   type    = string
   default = "Enabled"
-}  
+}
